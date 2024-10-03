@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório - 3º Trimestre de 2024</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        h2 {
+            font-size: 18px;
+            margin: 20px 0 10px;
+        }
+        canvas {
+            max-width: 500px;
+            margin: 0 auto 20px;
+            display: block;
+        }
+        .summary {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+        .summary div {
+            text-align: center;
+            padding: 10px;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            flex: 1;
+            margin: 0 5px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Relatório - 3º Trimestre de 2024</h1>
+
+<div class="summary">
+    <div>
+        <strong>Novos empenhos</strong><br>
+        15%
+    </div>
+    <div>
+        <strong>Empenhos</strong><br>
+        200
+    </div>
+    <div>
+        <strong>Entregues</strong><br>
+        90%
+    </div>
+</div>
+
+<h2>Crescimento Mensal de Vendas</h2>
+<canvas id="vendasChart"></canvas>
+
+<h2>Distribuição de Clientes</h2>
+<canvas id="clientesChart"></canvas>
+
+<script>
+    // Gráfico 1: Crescimento Mensal de Vendas
+    const ctxVendas = document.getElementById('vendasChart').getContext('2d');
+    const vendasChart = new Chart(ctxVendas, {
+        type: 'line',
+        data: {
+            labels: ['Jul', 'Ago', 'Set'],
+            datasets: [{
+                label: 'Vendas',
+                data: [12000, 15000, 18000],
+                borderColor: 'rgba(75, 192, 192, 1)',
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderWidth: 2,
+                fill: true
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    // Gráfico 2: Distribuição de Clientes por Região
+    const ctxClientes = document.getElementById('clientesChart').getContext('2d');
+    const clientesChart = new Chart(ctxClientes, {
+        type: 'pie',
+        data: {
+            labels: ['Sudeste', 'Sul', 'Nordeste', 'Centro-Oeste', 'Norte'],
+            datasets: [{
+                data: [50, 20, 15, 10, 5],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.5)',
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(255, 206, 86, 0.5)',
+                    'rgba(75, 192, 192, 0.5)',
+                    'rgba(153, 102, 255, 0.5)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+        }
+    });
+</script>
+
+</body>
+</html>

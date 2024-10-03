@@ -1,0 +1,19 @@
+{
+  "name": "projeto_Empdesck",
+  "version": "1.0.0",
+  "description": "Seu projeto aqui",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.21.0",
+    "jsonwebtoken": "^9.0.2",
+    "xlsx": "^0.18.5",
+    "mongoose": "^7.0.0",
+    "bcryptjs": "^2.4.3"
+  },
+  "scripts": {
+    "start": "node server"
+  },
+  "engines": {
+    "node": "14.x"
+  }
+}

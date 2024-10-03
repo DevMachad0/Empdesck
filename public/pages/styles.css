@@ -1,0 +1,244 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #343a40;
+    color: #fff;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    transition: width 0.3s;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-header {
+    padding: 9px;
+    display: flex;
+    align-items: center;
+    background-color: #495057;
+}
+
+.toggle-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center; /* Alinha a imagem e os contêineres de texto verticalmente */
+    padding: 1px; /* Adiciona padding para uma melhor apresentação */
+    transition: opacity 0.3s;
+    width: 100%; /* Garante que o container utilize toda a largura disponível */
+}
+
+.user-details {
+    display: flex;
+    flex-direction: column; /* Alinha o texto verticalmente */
+    margin-right: 10px; /* Espaço entre os textos e o espaçador */
+}
+
+.user-details p {
+    margin: 0;
+    color: #fff; /* Garante que o texto seja visível sobre o fundo escuro */
+}
+
+.spacer {
+    flex-grow: 1; /* Faz com que o spacer ocupe o espaço disponível */
+}
+
+.user-image {
+    display: flex;
+    align-items: center; /* Alinha verticalmente a imagem */
+}
+
+.user-image img {
+    width: 60px; /* Tamanho da imagem */
+    height: 60px; /* Tamanho da imagem */
+    border-radius: 50%; /* Faz a imagem ser circular */
+    object-fit: cover; /* Mantém a imagem com a proporção correta */
+}
+
+.sidebar-nav {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-nav li {
+    border-bottom: 1px solid #495057;
+}
+
+.sidebar-nav a {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    transition: background-color 0.3s;
+}
+
+.sidebar-nav a span {
+    margin-left: 10px;
+    transition: opacity 0.3s;
+}
+
+.sidebar-nav a:hover {
+    background-color: #6c757d;
+}
+
+.main-content {
+    margin-left: 150px;
+    padding: 20px;
+    width: 100%;
+}
+
+/* Estado recolhido */
+.sidebar.collapsed {
+    width: 80px;
+}
+
+.sidebar.collapsed .user-info {
+    display: none;
+}
+
+.sidebar.collapsed .sidebar-nav a span {
+    display: none;
+}
+
+.sidebar.collapsed .toggle-btn {
+    content: "\u2630"; /* Mudar para um ícone que represente o menu recolhido */
+}
+
+.table-container {
+    max-width: 100%;
+    overflow-x: auto;
+    justify-content: center;
+    margin: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead th {
+    background-color: #005dc0;
+    color: #000000;
+    padding: 10px;
+    text-align: left;
+}
+
+tbody tr {
+    border-bottom: 1px solid #ddd;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tbody td {
+    padding: 10px;
+    text-align: center; /* Centraliza o texto dentro das células */
+    vertical-align: middle; /* Garante que o conteúdo verticalmente centralizado */
+}
+
+tbody tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+#refreshBtn {
+    padding: 2px 2px;
+    font-size: 18px; /* Aumenta o tamanho do ícone */
+    border: none;
+    background-color: #5490ff; /* Altere essa cor para a que você preferir */
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-left: 6px;
+    transition: background-color 0.3s ease;
+}
+
+#refreshBtn:hover {
+    background-color: #002835; /* Cor ao passar o mouse */
+}
+
+#ocTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#ocTable th, #ocTable td {
+    border: 1px solid #ddd;
+    padding: 10px; /* Ajuste o padding para mais espaço dentro das células */
+    text-align: center; /* Centraliza o texto dentro das células */
+    vertical-align: middle; /* Garante que o conteúdo seja centralizado verticalmente */
+}
+
+.empenho-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.empenho-btn:hover {
+    background-color: #0056b3; /* Tom mais escuro de azul */
+}
+
+.status-btn {
+    background-color: #007bff; /* Cor padrão do botão */
+    color: white; /* Cor do texto */
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-flex; /* Alinha o texto centralizado */
+    align-items: center; /* Alinha verticalmente */
+    justify-content: center; /* Centraliza o texto horizontalmente */
+    font-weight: bold; /* Texto em negrito */
+    text-align: center; /* Garante que o texto fique centralizado */
+    min-width: 100px; /* Define uma largura mínima */
+}
+
+.status-btn:hover {
+    background-color: #0056b3; /* Tom mais escuro de azul ao passar o mouse */
+}
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Certifique-se de que está acima de outros conteúdos */
+}
+.table-container {
+    max-height: 450px;
+    overflow-y: auto;
+    margin-top: 20px;
+}

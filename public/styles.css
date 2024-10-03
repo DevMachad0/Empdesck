@@ -1,0 +1,96 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f4f4;
+  margin: 0;
+}
+
+.logo-container {
+  text-align: center;
+  margin-bottom: 0em;
+}
+
+.logo-image {
+  max-width: 100px; /* Ajuste o tamanho da imagem conforme necessário */
+  height: auto;
+}
+
+.logo-text {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: 3em;
+  margin-top: 0em;
+  color: #333;
+}
+
+
+.login-container {
+  background: #fff;
+  padding: 2em;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 1em;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+input {
+  width: 100%;
+  padding: 0.5em;
+  margin-bottom: 1em;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+button {
+  width: 100%;
+  padding: 0.7em;
+  border: none;
+  background-color: #28a745;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #218838;
+}
+
+#error-message {
+  color: red;
+}
+/* Container das imagens de cliente */
+.cliente-images-container {
+  display: flex;
+  justify-content: center; /* Centraliza as imagens horizontalmente */
+  gap: 10px; /* Espaço entre as imagens */
+  margin: 20px 0; /* Espaçamento acima e abaixo do container */
+}
+
+/* Estilo das imagens */
+.cliente-image {
+  max-width: 150px; /* Ajuste conforme necessário */
+  height: auto; /* Mantém a proporção das imagens */
+}
+/* Estilo da mensagem no rodapé */
+.footer-message {
+  position: fixed; /* Fixa a mensagem na tela */
+  bottom: 10px; /* Distância do fundo da tela */
+  left: 10px; /* Distância da borda esquerda da tela */
+  font-size: 12px; /* Tamanho da fonte pequeno */
+  color: #888; /* Cor do texto para não ser muito chamativo */
+  background-color: rgba(255, 255, 255, 0.8); /* Fundo semitransparente para melhorar a legibilidade */
+  padding: 5px; /* Espaçamento interno */
+  border-radius: 4px; /* Bordas arredondadas */
+  z-index: 1000; /* Garante que a mensagem fique sobre outros elementos */
+}

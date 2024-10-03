@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes da Ordem de Compra</title>
+    <link rel="icon" href="imagens\favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="loading" class="loading-overlay">
+        <img src="imagens\EMPDESK copy.gif" alt="Loading..." class="loading-logo">
+        <div class="loading-spinner"></div>
+    </div>
+    <div class="display-container">
+        <header>
+            <h1 class="title">Detalhes da Ordem de Compra</h1>
+        </header>
+        <section class="info-section">
+            <!-- Informações principais, exibidas lado a lado com quebra de linha -->
+            <div class="info-row">
+                <div class="info-column">
+                    <label for="empenhoField">Empenho:</label>
+                    <input type="text" id="empenhoField" class="editable">
+                </div>
+                <div class="info-column">
+                    <label for="ordemCompraField">Ordem de Compra:</label>
+                    <input type="text" id="ordemCompraField" class="editable">
+                </div>
+            </div>
+            <div class="info-row">
+                <div class="info-column">
+                    <label for="nupField">NUP:</label>
+                    <input type="text" id="nupField" class="editable">
+                </div>
+                <div class="info-column">
+                    <label for="fornecedorField">Fornecedor:</label>
+                    <input type="text" id="fornecedorField" class="editablefor">
+                </div>
+            </div>
+            <div class="info-row">
+                <div class="info-column">
+                    <label for="arpContratoPregaoField">ARP/Contrato Pregão:</label>
+                    <input type="text" id="arpContratoPregaoField" class="editable">
+                </div>
+                <div class="info-column">
+                    <label for="dtEmpenhoField">Dt Empenho:</label>
+                    <input type="date" id="dtEmpenhoField" class="editable">
+                </div>
+            </div>
+            <div class="info-row">
+                <div class="info-column">
+                    <label for="dtRecebimentoFornecedorField">Dt R.Fornecedor:</label>
+                    <input type="date" id="dtRecebimentoFornecedorField" class="editable">
+                    <button id="dtfornecedorButton" type="button">Alterar</button>
+                </div>
+                
+                <div class="info-column">
+                    <label for="projetoField">Projeto:</label>
+                    <input type="text" id="projetoField" class="editable">
+                    <button id="projetoButton" type="button">Alterar</button>
+                </div>
+            </div>
+            <div class="info-row">
+                <div class="info-column">
+                    <label for="prioridadeField">Prioridade:</label>
+                    <input type="text" id="prioridadeField" class="editable">
+                    <button id="prioridadeButton" type="button">Alterar</button>
+                </div>
+                <div class="info-column">
+                    <label for="statusField">Status:</label>
+                    <input type="text" id="statusField" class="editable">
+                    <button id="statusButton" type="button">Alterar</button>
+                </div>
+            </div>
+            <div class="info-row">
+                <div class="info-column">
+                    <label for="dtNotificacaoField">Dt Notificação:</label>
+                    <input type="date" id="dtNotificacaoField" class="editable">
+                    <button id="dtNotificacaoButton" type="button">Alterar</button>
+                </div>
+                <div class="info-column">
+                    <label for="dtagendamentoField">Dt agendamento:</label>
+                    <input type="date" id="dtagendamentoField" class="editable">
+                </div>
+            </div>
+            
+            <div class="info-row">
+                <div class="info-column">
+                    <label for="informacoesCoplaField">Informações COPLA:</label>
+                    <input type="text" id="informacoesCoplaField" class="editable">
+                </div>
+                <div class="button-container">
+                    <button id="backButton" type="button" class="button back">Voltar</button>
+                    <button id="salvarButton" type="button" class="button save">Salvar</button>
+                </div>
+            </div>
+            <div class="info-row">
+                <div class="info-column">
+                    <label for="responsavelField">Responsável:</label>
+                    <input type="text" id="responsavelField" class="editable">
+                </div>
+            </div>
+            <div class="info-row">
+                <div class="info-column">
+                    <label for="notificacaoField">Notificação:</label>
+                    <input type="text" id="notificacaoField" class="editableOBS">
+                </div>
+            </div>
+            <div class="info-row">
+                <div class="info-column">
+                    <label for="observacoesField">Observações:</label>
+                    <input type="text" id="observacoesField" class="editableOBS">
+                </div>
+            </div>
+        </section>
+
+        <!-- Tabela para exibir os itens -->
+        <h1 class="title">Empenhados:</h1>
+        <div class="table-container">
+            <table id="itemsTable">
+                <thead>
+                    <tr>
+                        <th>Código Item</th>
+                        <th>Descrição Item</th>
+                        <th>Apresentação Item</th>
+                        <th>Marca Item</th>
+                        <th>Qtd Solicitada Item</th>
+                        <th>Valor Unitário (R$)</th>
+                        <th>Valor Total (R$)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- As linhas da tabela serão preenchidas dinamicamente -->
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- Novo formulário e tabela para "Recebidos" -->
+        <section class="recebidos-section">
+            <h1 class="title">Recebidos:</h1>
+            <form id="recebidosForm" class="recebidos-form">
+                <div class="form-row">
+                    <div class="form-column">
+                        <label for="dtrecebimento">Data Recebimento:</label>
+                        <input type="date" id="dtrecebimento" class="editable">
+                    </div>
+                    <div class="form-column">
+                        <label for="Nnota">Nº Nota:</label>
+                        <input type="text" id="Nnota" class="editable">
+                    </div>
+                    <div class="form-column">
+                        <label for="codigoRecebidoField">Código:</label>
+                        <input type="text" id="codigoRecebidoField" class="editable">
+                    </div>
+                    <div class="form-column">
+                        <label for="descricaoRecebidoField">Descrição:</label>
+                        <input type="text" id="descricaoRecebidoField" class="editable" readonly>
+                    </div>
+                    <div class="form-column">
+                        <label for="apresentacaoRecebidoField">Apresentação:</label>
+                        <select id="apresentacaoRecebidoField" class="editable">
+                            <option value="">Selecione uma opção</option>
+                            <option value="galão">GALÃO</option>
+                            <option value="ampola">AMPOLA</option>
+                            <option value="comprimido">COMPRIMIDO</option>
+                            <option value="seringa">SERINGA</option>
+                            <option value="capsula">CAPSULA</option>
+                            <option value="adesivo">ADESIVO</option>
+                            <option value="bisnaga">BISNAGA</option>
+                            <option value="unidade">UNIDADE</option>
+                            <option value="frasco_ampola">FRASCO AMPOLA</option>
+                            <option value="bolsa">BOLSA</option>
+                            <option value="bombona">BOMBONA</option>
+                            <option value="frasco">FRASCO</option>
+                            <option value="caixa">CAIXA</option>
+                            <option value="cassetete">CASSETE</option>
+                            <option value="dragea">DRAGEA</option>
+                            <option value="envelope">ENVELOPE</option>
+                            <option value="fardo">FARDO</option>
+                            <option value="flaconetes">FLACONETES</option>
+                            <option value="pacote">PACOTE</option>
+                            <option value="tubo">TUBO</option>
+                            <option value="lata">LATA</option>
+                            <option value="supositorio">SUPOSITÓRIO</option>
+                            <option value="rolo">ROLO</option>
+                            <option value="par">PAR</option>
+                            <option value="sache">SACHÊ</option>
+                            <option value="spray">SPRAY</option>
+                            <option value="kit">KIT</option>
+                            <option value="lamina">LAMINA</option>
+                            <option value="blister">BLISTER</option>
+                            <option value="caneta">CANETA</option>
+                            <option value="cartela">CARTELA</option>
+                            <option value="teste">TESTE</option>
+                            <option value="grama">GRAMA</option>
+                            <option value="tubete">TUBETE</option>
+                            <option value="dose">DOSE</option>
+                        </select>
+                    </div>
+                    
+                </div>
+                <div class="form-row">
+                    <div class="form-column">
+                        <label for="marcaRecebidoField">Marca:</label>
+                        <input type="text" id="marcaRecebidoField" class="editable">
+                    </div>
+                    <div class="form-column">
+                        <label for="quantidadeRecebidoField">Qtd Recebida:</label>
+                        <input type="number" id="quantidadeRecebidoField" name="quantidadeRecebidoField" class="editable">
+                    </div>
+                    <div class="form-column">
+                        <label for="valorUniRecebidoField">Valor Unitário (R$):</label>
+                        <input type="text" id="valorUniRecebidoField" name="valorUniRecebidoField" class="editable" placeholder="R$ 0,00">
+                    </div>
+                    <div class="form-column">
+                        <label for="valortotalRecebidoField">Valor Total (R$):</label>
+                        <input type="text" id="valortotalRecebidoField" name="valortotalRecebidoField" class="editable" readonly placeholder="R$ 0,00">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="checklist-column">
+                        <h2 class="subtitle">Entregue em Conformidade?:</h2>
+                        <ul class="checklist">
+                            <li><input type="checkbox" id="Conformidade1"><label for="Conformidade1">Sim</label></li>
+                            <li><input type="checkbox" id="Conformidade2"><label for="Conformidade2">Não</label></li>
+                            <!-- Adicione mais itens conforme necessário -->
+                        </ul>
+                    </div>
+                    <div class="checklist-column">
+                        <h2 class="subtitle">Troca de Marca?:</h2>
+                        <ul class="checklist">
+                            <li><input type="checkbox" id="trocademarca1"><label for="trocademarca1">Sim</label></li>
+                            <li><input type="checkbox" id="trocademarca2"><label for="trocademarca2">Não</label></li>
+                            <!-- Adicione mais itens conforme necessário -->
+                        </ul>
+                    </div>
+                    <div class="button-column">
+                        <button id="addRecebidoButton" type="button">Adicionar</button>
+                    </div>
+                </div>
+            </form>
+
+            <!-- Tabela para exibir os itens recebidos -->
+            <div class="table-container">
+                <table id="recebidosTable" class="tabela-personalizada">
+                    <thead>
+                        <tr>
+                            <th>Dt</th>
+                            <th>Nº Nota</th>
+                            <th>Código</th>
+                            <th>Descrição</th>
+                            <th>Apresentação</th>
+                            <th>Marca</th>
+                            <th>Qtd Recebida</th>
+                            <th>Valor Unitário (R$)</th>
+                            <th>Valor Total (R$)</th>
+                            <th>Entregue nos conformes?</th>
+                            <th>Carta de troca?</th>
+                            <th>Deletar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- As linhas da tabela serão preenchidas dinamicamente -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+<!-- Novo contêiner para Históricos -->
+<section class="historicos-section">
+    <h1 class="title">Históricos:</h1>
+    <div class="tabela-container">
+        <table id="historicosTable">
+            <thead>
+                <tr>
+                    <th>Usuário</th>
+                    <th>Data</th>
+                    <th>Hora</th>
+                    <th>Movimentação</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Aqui vão os dados da tabela -->
+            </tbody>
+        </table>
+    </div>
+</section>
+                <!-- Novo contêiner para Comentários -->
+                <section class="comentarios-section">
+                    <h1 class="title">Comentários:</h1>
+                    <textarea id="comentariosField" rows="4" placeholder="Digite seus comentários aqui..."></textarea>
+                    <button id="addcomentButton" type="button">Adicionar</button>
+                    <div class="comentarios-container">
+                        <table id="ComentariosTable">
+                            <thead>
+                                <tr>
+                                    <th>Usuario</th>
+                                    <th>Empenho</th>
+                                    <th>Registro de Comentários</th>
+                                    <th>Data e Hora</th>
+                                </tr>
+                            </thead>
+                        <tbody>
+                            <!-- Aqui vão os dados da tabela -->
+                        </tbody>
+                    </table>
+                </div>
+                </section>
+            </div>
+    </div>
+    <script src="log.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

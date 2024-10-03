@@ -1,0 +1,5 @@
+_id,username,password,__v,nome,unidade,contato,email,grupo,status,ocupacao
+66bcae03442e1ed09f2685c8,admin,$2a$10$ZKLdb2sE5FwUhGs1oFLncOEtHPWG9GaQR.TXV4IcX/sDGOZcFbTjS,0,,,,,,,
+66c49d979f04923b547ef101,Deivid,$2a$10$LmOLP0TZOy2V5tLMkkK6w.DCFLaImRySgdUruYsL9TeEC1XY5/pLC,0,,,,,,,
+66c4d6c39f04923b547ef115,asd,$2a$10$xJAvhb4F05o5T6uySe/amexRRIRlkHPxsRRCng26oEy6gKx1nrkRK,0,,,,,,,
+66c5d5c3b2b5e11cf25ff7e6,deivid,$2a$10$n6vuBcqrrNt2OuVvrVSMV.jDWuPCYaN0hjdNrnTTO7WVRlUazuWwK,0,DEIVID KEVIN DA SILVA MACHADO,qqwe,54444444444,deividkevin737@gmail.com,dasd,sac,aaaaaaaaaaa
