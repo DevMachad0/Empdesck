@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Ordem de Compra</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h2>Cadastro de Empenho</h2>
+    <h9>(*) Obrigatorio</h9>
+    <div class="container">
+        
+        <form id="ocForm">
+            <!-- Campos do formulário principal -->
+            <div class="form-row small">
+                <label for="empenho">Empenho*:</label>
+                <input type="text" id="empenho" name="empenho" placeholder="Nº do empenho">
+            </div>
+            <div class="form-row small">
+                <label for="nup">NUP*:</label>
+                <input type="text" id="nup" name="nup" placeholder="Nº do Nup">
+            </div>
+            <div class="form-row">
+                <label for="ordemCompra">Ordem de Compra*:</label>
+                <input type="text" id="ordemCompra" name="ordemCompra">
+            </div>
+            <div class="form-row">
+                <label for="fornecedor">Fornecedor*:</label>
+                <select id="fornecedor" name="fornecedor" >
+                    <option value="">Selecione um fornecedor</option>
+                </select>
+            </div>
+            <div class="form-row small">
+                <label for="arpContratoPregao">ARP/Contrato Pregão*:</label>
+                <input type="text" id="arpContratoPregao" name="arpContratoPregao" placeholder="Nº do Pregão">
+            </div>
+            <div class="form-row small">
+                <label for="dtEmpenho">Dt Empenho*:</label>
+                <input type="date" id="dtEmpenho" name="dtEmpenho" value="0001-01-01">
+            </div>
+            <div class="form-row small">
+                <label for="dtRecebimentoFornecedor">Dt Recebimento Fornecedor:</label>
+                <input type="date" id="dtRecebimentoFornecedor" name="dtRecebimentoFornecedor" value="0001-01-01">
+            </div>
+            <div class="form-row small">
+                <label for="projeto">Projeto*:</label>
+                <select id="projeto" name="projeto">
+                    <option value="">Selecione</option>
+                    <option value="PROJETO JUDICIAL">PROJETO JUDICIAL</option>
+                    <option value="DST/AIDS">DST/AIDS</option>
+                    <option value="ODONTOLÓGICO">ODONTOLÓGICO</option>
+                    <option value="GESTÃO HOSPITALAR">GESTÃO HOSPITALAR</option>
+                    <option value="AFB">AFB</option>
+                    <option value="PORTARIA Nº 3.385 INCREMENTO AFB">PORTARIA Nº 3.385 INCREMENTO AFB</option>
+                    <option value="ESTRATÉGICOS">ESTRATÉGICOS</option>
+                    <option value="ESPECIALIZADO">ESPECIALIZADO</option>
+                    <option value="AFS">AFS</option>
+                    <option value="SAUDE DA MULHER">SAÚDE DA MULHER</option>
+                    <option value="INFECÇÃO OPORTUNISTA">INFECÇÃO OPORTUNISTA</option>
+                    <option value="PROJETO OSTOMIZADO">PROJETO OSTOMIZADO</option>
+                    <option value="TESOURO">TESOURO</option>
+                    <option value="CEBUC">CEBUC</option>
+                    <option value="COAD">COAD</option>
+                    <option value="ONCOLÓGICO">ONCOLÓGICO</option>
+                    <option value="COVID">COVID</option>
+                    <option value="HEPATITE">HEPATITE</option>
+                    <option value="EM BRANCO">EM BRANCO</option>
+                </select>
+            </div>
+            <div class="form-row small">
+                <label for="prioridade">Prioridade*:</label>
+                <select id="prioridade" name="prioridade" required>
+                    <option value="">Selecione</option>
+                    <option value="zero">Zero</option>
+                    <option value="critica">Crítica </option>
+                    <option value="alta">Alta</option>
+                    <option value="media">Média</option>
+                    <option value="baixa">Baixa</option>
+                </select>
+            </div>
+            <div class="form-row small">
+                <label for="dtNotificacao">Dt Notificação:</label>
+                <input type="date" id="dtNotificacao" name="dtNotificacao" value="0001-01-01">
+            </div>
+            <div class="form-row">
+                <label for="informacoesCopla">Informações COPLA:</label>
+                <input type="text" id="informacoesCopla" name="informacoesCopla">
+            </div>
+            <div class="form-row">
+                <label for="notificacao">Notificação:</label>
+                <input type="text" id="notificacao" name="notificacao">
+            </div>
+            <div class="form-row full-width">
+                <label for="observacoes">Observações:</label>
+                <textarea id="observacoes" name="observacoes"></textarea>
+            </div>
+        </form>
+
+        <!-- Adicionar Item -->
+        <div class="add-item-frame">
+            <h2>Adicionar Item</h2>
+            <form id="itemForm">
+                <div class="form-row small">
+                    <label for="itemCodigo">Código*:</label>
+                    <input type="text" id="itemCodigo" name="itemCodigo" placeholder="Codigo do produto">
+                </div>
+                <div class="form-row small">
+                    <label for="itemDescricao">Descrição*:</label>
+                    <input type="text" id="itemDescricao" name="itemDescricao" readonly placeholder="Descrição do Itens">
+                </div>
+                <div class="form-row small">
+                    <label for="itemApresentacao">Apresentação:</label>
+                    <select id="itemApresentacao" name="itemApresentacao">
+                        <option value="">Selecione uma opção</option>
+                        <option value="galão">GALÃO</option>
+                        <option value="ampola">AMPOLA</option>
+                        <option value="comprimido">COMPRIMIDO</option>
+                        <option value="seringa">SERINGA</option>
+                        <option value="capsula">CAPSULA</option>
+                        <option value="adesivo">ADESIVO</option>
+                        <option value="bisnaga">BISNAGA</option>
+                        <option value="unidade">UNIDADE</option>
+                        <option value="frasco_ampola">FRASCO AMPOLA</option>
+                        <option value="bolsa">BOLSA</option>
+                        <option value="bombona">BOMBONA</option>
+                        <option value="frasco">FRASCO</option>
+                        <option value="caixa">CAIXA</option>
+                        <option value="cassete">CASSETE</option>
+                        <option value="dragea">DRAGEA</option>
+                        <option value="envelope">ENVELOPE</option>
+                        <option value="fardo">FARDO</option>
+                        <option value="flaconetes">FLACONETES</option>
+                        <option value="pacote">PACOTE</option>
+                        <option value="tubo">TUBO</option>
+                        <option value="lata">LATA</option>
+                        <option value="supositorio">SUPOSITÓRIO</option>
+                        <option value="rolo">ROLO</option>
+                        <option value="par">PAR</option>
+                        <option value="sache">SACHÊ</option>
+                        <option value="spray">SPRAY</option>
+                        <option value="kit">KIT</option>
+                        <option value="lamina">LAMINA</option>
+                        <option value="blister">BLISTER</option>
+                        <option value="caneta">CANETA</option>
+                        <option value="cartela">CARTELA</option>
+                        <option value="teste">TESTE</option>
+                        <option value="grama">GRAMAS</option>
+                        <option value="tubete">TUBETE</option>
+                        <option value="dose">DOSE</option>
+                    </select>
+                </div>
+                <div class="form-row small">
+                    <label for="itemMarca">Marca:</label>
+                    <input type="text" id="itemMarca" name="itemMarca">
+                </div>
+                <div class="form-row small">
+                    <label for="itemQtdSolicitada">Qtd Solicitada:</label>
+                    <input type="number" id="itemQtdSolicitada" name="itemQtdSolicitada">
+                </div>
+                <div class="form-row small">
+                    <label for="itemValorUnt">Valor Unit (R$):</label>
+                    <input type="text" id="itemValorUnt" name="itemValorUnt" placeholder="R$ 0,0000">
+                </div>
+                <div class="form-row small">
+                    <label for="itemValorTotal">Valor Total (R$):</label>
+                    <input type="text" id="itemValorTotal" name="itemValorTotal" readonly placeholder="R$ 0,0000">
+                </div>
+                <div class="form-row">
+                    <button type="button" id="addItemBtn">Salvar</button>
+                </div>
+                <div class="form-row">
+                    <button type="button" id="cadastrar">Cadastrar OC</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="notification" id="notification">Processo salvo com sucesso!</div>
+        <div class="table-container">
+            <table id="infoTable">
+                <thead>
+                    <tr>
+                        <!-- Adiciona colunas para todos os campos -->
+                        <th class="coluna-oculta">Empenho</th>
+                        <th class="coluna-oculta">NUP</th>
+                        <th class="coluna-oculta">Ordem de Compra</th>
+                        <th class="coluna-oculta">ARP/Contrato Pregão</th>
+                        <th class="coluna-oculta">Dt Empenho</th>
+                        <th class="coluna-oculta">Dt Recebimento Fornecedor</th>
+                        <th class="coluna-oculta">Projeto</th>
+                        <th class="coluna-oculta">Prioridade</th>
+                        <th class="coluna-oculta">Dt Notificação</th>
+                        <th class="coluna-oculta">Informações COPLA</th>
+                        <th class="coluna-oculta">Notificação</th>
+                        <th class="coluna-oculta">Observações</th>
+                        <!-- Adiciona colunas para os campos do item -->
+                        <th>Código Item</th>
+                        <th>Descrição Item</th>
+                        <th>Apresentação Item</th>
+                        <th>Marca Item</th>
+                        <th>Qtd Solicitada Item</th>
+                        <th>Valor Unitário Item</th>
+                        <th>Valor Total Item</th>
+                        <th>Deletar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- As linhas da tabela serão preenchidas pelo JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script src="cadastro_oc/script.js"></script>
+    <script>
+        document.getElementById("consultarb").onclick = function() {
+            localStorage.setItem("openModal", "true");
+            window.location.href = "../home.html"; // Redireciona para a página principal
+        }
+    </script>
+</body>
+</html>

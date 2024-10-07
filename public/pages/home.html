@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empdesk</title>
+    <link rel="icon" href="..\logo\favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="cadastro_oc/styles.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="config\styles.css">
+    <link rel="stylesheet" href="acesso_empenho\styles.css">
+</head>
+<body>
+    <div id="loading" class="loading-overlay">
+        <img src="../logo/EMPDESK copy.gif" alt="Loading..." class="loading-logo">
+        <div class="loading-spinner"></div>
+    </div>
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <button class="toggle-btn" id="toggle-btn">☰</button>
+            <div class="user-info">
+                <div class="user-details">
+                    <p id="userName">.</p>
+                    <p id="userUnit">Unidade</p>
+                </div>
+                <div class="spacer"></div>
+                <div class="user-image">
+                    <img src="user.png" alt="User Image">
+                </div>
+            </div>            
+        </div>
+        <nav class="sidebar-nav">
+            <ul>
+                <li><a href="#" id="home-link" onclick="hidePopupButton()">🏠 <span>Home</span></a></li>
+                <li><a href="#" id="preferences-link" onclick="hidePopupButton()">⚙️ <span>Preferências</span></a></li>
+                <li><a href="#" id="cadastrar-oc-link" onclick="showPopupButton()">📝 <span>Cadastrar Empenho</span></a></li>
+                <li><a href="#" id="popup-button" style="display: none;">🔍 <span>Abrir Menu</span></a></li>
+                <li><a href="#" id="report-link" onclick="hidePopupButton()">📊 <span>Relatório</span></a></li>
+                
+                <li><a href="#" id="sair-link" onclick="hidePopupButton(); sair()">⬅️ <span>Sair do sistema</span></a></li>
+            </ul>
+        </nav>
+    </div>
+    <!-- Janela pop-up -->
+    <div id="popup">
+        <div class="popup-header" id="popup-header">
+            <span>Menu Flutuante</span>
+            <span class="close" id="close-popup" style="cursor: pointer;">&times;</span>
+        </div>
+        <div class="popup-content">
+            <p>Menu de ações.</p>
+            <a href="#" id="consultarb">🔍 Consultar</a>
+            <!-- Adicione mais informações conforme necessário -->
+        </div>
+    </div>
+
+    <!-- Modal -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="close-modal">&times;</span>
+        <h2>Consultar Itens</h2>
+        <h6>Obrigatório ter pelo menos 3 caracteres.*</h6>
+        <input type="text" id="search-input" placeholder="Digite a Descrição do item...">
+        <button id="search-button">Pesquisar</button>
+        <table>
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Descrição</th>
+                </tr>
+            </thead>
+            <tbody id="result-table-body">
+                <!-- Resultados da pesquisa serão inseridos aqui -->
+            </tbody>
+        </table>
+    </div>
+</div>
+    <div class="main-content" id="main-content">
+        <div class="page-content" id="home-content">
+                        <!-- Dados da tabela serão inseridos aqui -->
+                    </tbody>
+                </table>
+            </div>
+    </div>
+    <script src="script.js"></script>
+    <script src="cadastro_oc/script.js"></script>
+    <script src="config/script.js"></script>
+    <script>
+       // Mostra o botão "Abrir Menu" ao clicar em "Cadastrar Empenho"
+       function showPopupButton() {
+            document.getElementById("popup-button").style.display = "block";
+        }
+
+        // Oculta o botão "Abrir Menu" quando qualquer outro botão é clicado
+        function hidePopupButton() {
+            document.getElementById("popup-button").style.display = "none";
+            hidePopup(); // Fecha o pop-up se estiver aberto
+        }
+
+        // Fecha a janela pop-up
+        function hidePopup() {
+            document.getElementById("popup").style.display = "none";
+        }
+
+        // Abre a janela pop-up ao clicar no botão
+        document.getElementById("popup-button").onclick = function() {
+            document.getElementById("modal").style.display = "block";
+        }
+
+        // Fecha a janela pop-up ao clicar no "X"
+        document.getElementById("close-popup").onclick = function() {
+            hidePopup();
+        }
+
+        // Lógica para arrastar a janela pop-up
+        dragElement(document.getElementById("popup"));
+
+        function dragElement(el) {
+            let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+            const header = document.getElementById("popup-header");
+            header.onmousedown = dragMouseDown;
+
+            function dragMouseDown(e) {
+                e = e || window.event;
+                e.preventDefault();
+                pos3 = e.clientX;
+                pos4 = e.clientY;
+                document.onmouseup = closeDragElement;
+                document.onmousemove = elementDrag;
+            }
+
+            function elementDrag(e) {
+                e = e || window.event;
+                e.preventDefault();
+                pos1 = pos3 - e.clientX;
+                pos2 = pos4 - e.clientY;
+                pos3 = e.clientX;
+                pos4 = e.clientY;
+                el.style.top = (el.offsetTop - pos2) + "px";
+                el.style.left = (el.offsetLeft - pos1) + "px";
+            }
+
+            function closeDragElement() {
+                document.onmouseup = null;
+                document.onmousemove = null;
+            }
+        }
+        document.getElementById("search-button").onclick = async function() {
+    const input = document.getElementById("search-input").value;
+    const tbody = document.getElementById("result-table-body");
+    
+    // Limpar resultados anteriores
+    tbody.innerHTML = "";
+    
+    // Verificação para garantir que o input tenha pelo menos 3 caracteres
+    if (input.length < 3) {
+        alert("Por favor, digite pelo menos 3 caracteres para realizar a pesquisa.");
+        return; // Interrompe a execução da função
+    }
+    
+    if (input) {
+        try {
+            const response = await fetch(`/api/items/search?q=${encodeURIComponent(input)}`);
+            const items = await response.json();
+
+            if (items.length > 0) {
+                items.forEach(item => {
+                    const row = document.createElement("tr");
+                    row.innerHTML = `<td>${item.codigo}</td><td>${item.descricao}</td>`;
+                    
+                    // Adiciona evento de clique à linha
+                    row.onclick = function() {
+                        // Limpa os campos
+                        document.getElementById("itemCodigo").value = "";
+                        document.getElementById("itemDescricao").value = "";
+                        
+                        // Preenche os campos
+                        document.getElementById("itemCodigo").value = item.codigo;  // Preenche o campo itemCodigo
+                        document.getElementById("itemDescricao").value = item.descricao; // Preenche o campo itemDescricao
+
+                        // Fecha o modal de pesquisa usando o close-modal
+                        document.getElementById("close-modal").click(); 
+                    };
+
+                    tbody.appendChild(row);
+                });
+            } else {
+                tbody.innerHTML = `<tr><td colspan="2">Nenhum item encontrado.</td></tr>`;
+            }
+        } catch (error) {
+            alert('Erro ao buscar itens: ' + error.message);
+        }
+    } else {
+        alert("Por favor, digite algo para pesquisar.");
+    }
+};
+
+    </script>
+</body>
+</html>
